@@ -1,13 +1,10 @@
 from tkinter import *
 
 
-def miles_to_km(miles):
-    return round(miles * 1.6093, 2)
-
-
 def calculate():
     entry_miles = float(miles_entry.get())
-    calculated_label.config(text=miles_to_km(entry_miles))
+    km = round(entry_miles * 1.6093, 2)
+    calculated_label.config(text=km)
 
 
 # Window
@@ -20,16 +17,14 @@ miles_label = Label()
 miles_label.config(text="Miles")
 miles_label.grid(column=2, row=0)
 
-is_equal_to_label = Label()
-is_equal_to_label.config(text="is equal to")
+is_equal_to_label = Label(text="is equal to")
 is_equal_to_label.grid(column=0, row=1)
 
-km_label = Label()
-km_label.config(text="Km")
+km_label = Label(text="Km")
 km_label.grid(column=2, row=1)
 
-calculated_label = Label()
-calculated_label.config(text="0", padx=5, pady=5)
+calculated_label = Label(text="0")
+calculated_label.config(padx=5, pady=5)
 calculated_label.grid(column=1, row=1)
 
 # Entry
