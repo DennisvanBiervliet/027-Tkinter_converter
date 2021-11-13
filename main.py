@@ -1,38 +1,47 @@
-import tkinter
+from tkinter import *
 
 
-def miles_to_km_conversion():
-    miles_to_km = round(float(text_input.get()) * 1.60934, 1)
-    to_km_label.config(text=miles_to_km)
+def miles_to_km(miles):
+    return round(miles * 1.6093, 2)
+
+
+def calculate():
+    entry_miles = float(miles_entry.get())
+    calculated_label.config(text=miles_to_km(entry_miles))
 
 
 # Window
-window = tkinter.Tk()
-window.title("Miles to km converter")
-window.config(padx=25, pady=25)
-# window.minsize(width=500, height=300)
+window = Tk()
+window.title("Mile to Km Converter")
+window.config(padx=20, pady=20)
 
-# Label
-miles_label = tkinter.Label(text="Miles", font=("Arial", 12))
+# Labels (1 - 4)
+miles_label = Label()
+miles_label.config(text="Miles")
 miles_label.grid(column=2, row=0)
 
-equal_label = tkinter.Label(text="is equal to", font=("Arial", 12))
-equal_label.grid(column=0, row=1)
+is_equal_to_label = Label()
+is_equal_to_label.config(text="is equal to")
+is_equal_to_label.grid(column=0, row=1)
 
-to_km_label = tkinter.Label(text="0", font=("Arial", 12))
-to_km_label.grid(column=1, row=1)
-
-km_label = tkinter.Label(text="Km", font=("Arial", 12))
+km_label = Label()
+km_label.config(text="Km")
 km_label.grid(column=2, row=1)
 
+calculated_label = Label()
+calculated_label.config(text="0", padx=5, pady=5)
+calculated_label.grid(column=1, row=1)
+
+# Entry
+miles_entry = Entry()
+miles_entry.config(width=5)
+miles_text = miles_entry.get()
+
+miles_entry.grid(column=1, row=0)
+
 # Button
-button = tkinter.Button(text="Calculate", command=miles_to_km_conversion)
-button.grid(column=1, row=2)
-
-# Text entry, 1 line
-text_input = tkinter.Entry(width=5)
-text_input.insert(tkinter.END, string=0)
-text_input.grid(column=1, row=0)
-
+calculate_button = Button()
+calculate_button.config(text="Calculate", command=calculate)
+calculate_button.grid(column=1, row=2)
 
 window.mainloop()
